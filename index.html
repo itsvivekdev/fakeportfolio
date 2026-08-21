@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Vivek Kumar — Front-End Developer specialising in React, JavaScript & responsive UI. Based in New Delhi."/>
+  <title>Vivek Kumar · Front-End Developer</title>
+
+  <!-- Fonts: Clash Display (Display) + Satoshi (Body) + JetBrains Mono (Code) -->
+  <!-- Served via Google Fonts alternatives since Clash/Satoshi need CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Portfolio stylesheet -->
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+
+  <!-- ════════════════════════════════
+       PAGE LOADER
+  ════════════════════════════════ -->
+  <div class="loader" id="loader">
+    <span class="loader__label">Loading Portfolio</span>
+    <div class="loader__name"><span>Vivek <em>Kumar</em></span></div>
+    <div class="loader__bar"><div class="loader__fill"></div></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       CUSTOM CURSOR
+  ════════════════════════════════ -->
+  <div class="cursor" id="cursor">
+    <div class="cursor__dot"  id="cDot"></div>
+    <div class="cursor__ring" id="cRing"></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       BACK TO TOP
+  ════════════════════════════════ -->
+  <a href="#home" class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </a>
+
+  <!-- ════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════ -->
+  <header class="nav" id="nav">
+    <a href="#home" class="nav__logo">VK<em>.</em></a>
+    <nav aria-label="Primary navigation">
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav__cta">Hire Me</a>
+    <button class="nav__ham" id="hamBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile navigation drawer -->
+  <div class="nav__drawer" id="drawer" aria-hidden="true">
+    <a href="#about"    onclick="closeDrawer()">About</a>
+    <a href="#projects" onclick="closeDrawer()">Projects</a>
+    <a href="#contact"  onclick="closeDrawer()">Contact</a>
+    <a href="#contact"  onclick="closeDrawer()" style="color:var(--amber)">Hire Me</a>
+  </div>
+
+  <main>
+
+    <!-- ════════════════════════════════
+         HERO
+    ════════════════════════════════ -->
+    <section id="home" aria-label="Introduction">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <!-- Left — copy -->
+      <div class="hero__left">
+        <div class="hero__tag">
+          <div class="hero__tag-dot"></div>
+          Available for Freelance &nbsp;·&nbsp; New Delhi, India
+        </div>
+
+        <h1 class="hero__name">
+          Vivek
+          <span class="hero__name-line2">Kumar</span>
+        </h1>
+
+        <p class="hero__title">
+          <strong>Front-End Developer</strong> &mdash;
+          <span id="typeRole"></span>
+        </p>
+
+        <p class="hero__desc">
+          Specialising in React &amp; modern JavaScript — building clean,
+          responsive and production-ready web interfaces from New Delhi.
+        </p>
+
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn-primary">View My Work →</a>
+          <a href="https://vivekzx02.github.io/Porfolio/" target="_blank" rel="noopener" class="btn btn-ghost">
+            Live Portfolio ↗
+          </a>
+        </div>
+
+        <div class="hero__badges">
+          <span class="hero__badge">React</span>
+          <span class="hero__badge">JavaScript</span>
+          <span class="hero__badge">HTML &amp; CSS</span>
+          <span class="hero__badge">Tailwind</span>
+          <span class="hero__badge">Git</span>
+        </div>
+      </div>
+
+      <!-- Right — Three.js 3D canvas -->
+      <div class="hero__right">
+        <div class="hero__canvas-wrap">
+          <canvas id="heroCanvas"></canvas>
+          <div class="hero__canvas-label">
+            <div class="canvas-label-dot"></div>
+            <span>Open to Work</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-hint__bar"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         TECH TICKER
+    ════════════════════════════════ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <!-- doubled for seamless loop -->
+        <div class="ticker__item">React.js</div>
+        <div class="ticker__item">JavaScript ES6+</div>
+        <div class="ticker__item">HTML5 &amp; CSS3</div>
+        <div class="ticker__item">Responsive Design</div>
+        <div class="ticker__item">Tailwind CSS</div>
+        <div class="ticker__item">UI Performance</div>
+        <div class="ticker__item">Git &amp; GitHub</div>
+        <div class="ticker__item">VS Code</div>
+        <div class="ticker__item">React.js</div>
+        <div class="ticker__item">JavaScript ES6+</div>
+        <div class="ticker__item">HTML5 &amp; CSS3</div>
+        <div class="ticker__item">Responsive Design</div>
+        <div class="ticker__item">Tailwind CSS</div>
+        <div class="ticker__item">UI Performance</div>
+        <div class="ticker__item">Git &amp; GitHub</div>
+        <div class="ticker__item">VS Code</div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════
+         ABOUT
+    ════════════════════════════════ -->
+    <section id="about" class="section section--alt">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">About Me</div>
+          <h2 class="s-heading">Building the web,<br>one <em>pixel</em> at a time.</h2>
+        </div>
+
+        <div class="about__grid">
+
+          <!-- Portrait -->
+          <div class="portrait-card reveal-x">
+            <div class="portrait-frame">
+              <!-- Hand-crafted SVG developer portrait — warm skin, natural look -->
+              <div class="portrait-avatar">
+                <svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="sg" cx="50%" cy="40%" r="50%">
+                      <stop offset="0%" stop-color="#f0c090"/>
+                      <stop offset="100%" stop-color="#d4956b"/>
+                    </radialGradient>
+                    <radialGradient id="hg" cx="50%" cy="20%" r="60%">
+                      <stop offset="0%" stop-color="#2e1f10"/>
+                      <stop offset="100%" stop-color="#180c04"/>
+                    </radialGradient>
+                    <linearGradient id="jg" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#1e1a16"/>
+                      <stop offset="100%" stop-color="#0f0d0b"/>
+                    </linearGradient>
+                    <linearGradient id="lapg" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#252018"/>
+                      <stop offset="100%" stop-color="#161310"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Body -->
+                  <ellipse cx="120" cy="295" rx="88" ry="50" fill="#0f0d0b"/>
+                  <rect x="62" y="230" width="116" height="85" rx="14" fill="url(#jg)"/>
+
+                  <!-- Shirt collar V -->
+                  <path d="M102 234 L120 264 L138 234" fill="none" stroke="rgba(245,158,11,.35)" stroke-width="1.5"/>
+
+                  <!-- Left arm -->
+                  <rect x="38" y="232" width="26" height="60" rx="13" fill="url(#jg)"/>
+                  <ellipse cx="51" cy="295" rx="13" ry="10" fill="url(#sg)"/>
+
+                  <!-- Right arm -->
+                  <rect x="176" y="232" width="26" height="60" rx="13" fill="url(#jg)"/>
+                  <ellipse cx="189" cy="295" rx="13" ry="10" fill="url(#sg)"/>
+
+                  <!-- Neck -->
+                  <rect x="109" y="210" width="22" height="26" rx="5" fill="url(#sg)"/>
+
+                  <!-- Head -->
+                  <ellipse cx="120" cy="188" rx="46" ry="50" fill="url(#sg)"/>
+
+                  <!-- Ears -->
+                  <ellipse cx="74"  cy="192" rx="7" ry="9" fill="url(#sg)"/>
+                  <ellipse cx="166" cy="192" rx="7" ry="9" fill="url(#sg)"/>
+
+                  <!-- Hair top -->
+                  <ellipse cx="120" cy="150" rx="47" ry="28" fill="url(#hg)"/>
+                  <!-- Hair sides -->
+                  <rect x="73" y="147" width="94" height="28" rx="0" fill="url(#hg)"/>
+                  <ellipse cx="75"  cy="172" rx="11" ry="20" fill="url(#hg)"/>
+                  <ellipse cx="165" cy="172" rx="11" ry="20" fill="url(#hg)"/>
+                  <!-- Hair detail lines -->
+                  <path d="M95 148 Q120 138 145 148" fill="none" stroke="rgba(255,200,120,.08)" stroke-width="1.5"/>
+
+                  <!-- Eyebrows -->
+                  <path d="M97 176 Q105 171 113 176" fill="none" stroke="#2e1f10" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M127 176 Q135 171 143 176" fill="none" stroke="#2e1f10" stroke-width="2" stroke-linecap="round"/>
+
+                  <!-- Eyes — warm brown irises -->
+                  <ellipse cx="105" cy="188" rx="9"   ry="8.5" fill="#fff"/>
+                  <ellipse cx="135" cy="188" rx="9"   ry="8.5" fill="#fff"/>
+                  <ellipse cx="105" cy="189" rx="6.5" ry="6.5" fill="#5a2d0c"/>
+                  <ellipse cx="135" cy="189" rx="6.5" ry="6.5" fill="#5a2d0c"/>
+                  <circle  cx="105" cy="189" r="4" fill="#1a0800"/>
+                  <circle  cx="135" cy="189" r="4" fill="#1a0800"/>
+                  <circle  cx="107" cy="186" r="1.5" fill="rgba(255,255,255,.8)"/>
+                  <circle  cx="137" cy="186" r="1.5" fill="rgba(255,255,255,.8)"/>
+
+                  <!-- Nose -->
+                  <ellipse cx="120" cy="202" rx="3.5" ry="2" fill="rgba(160,90,40,.3)"/>
+
+                  <!-- Mouth — slight smile -->
+                  <path d="M111 212 Q120 220 129 212" fill="none" stroke="#c07848" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M111 212 Q116 208 120 208 Q124 208 129 212" fill="rgba(200,120,80,.2)"/>
+
+                  <!-- Laptop on lap -->
+                  <rect x="42" y="290" width="156" height="10" rx="3" fill="url(#lapg)"/>
+                  <rect x="46" y="252" width="148" height="42" rx="5" fill="url(#lapg)"/>
+                  <!-- Screen bezel -->
+                  <rect x="50" y="255" width="140" height="36" rx="3" fill="#08090c"/>
+                  <!-- Screen glow -->
+                  <rect x="52" y="257" width="136" height="32" rx="2" fill="#060c1c"/>
+                  <!-- Code lines on screen -->
+                  <rect x="58" y="261" width="52" height="3.5" rx="1.5" fill="rgba(245,158,11,.75)"/>
+                  <rect x="58" y="267" width="80" height="3"   rx="1.5" fill="rgba(96,165,250,.6)"/>
+                  <rect x="58" y="273" width="64" height="3"   rx="1.5" fill="rgba(134,239,172,.5)"/>
+                  <rect x="64" y="279" width="44" height="3"   rx="1.5" fill="rgba(245,158,11,.55)"/>
+                  <!-- Cursor -->
+                  <rect x="112" y="261" width="2" height="8" rx="1" fill="#f59e0b" opacity=".9">
+                    <animate attributeName="opacity" values="0.9;0;0.9" dur="1.1s" repeatCount="indefinite"/>
+                  </rect>
+                  <!-- Keyboard keys hint -->
+                  <rect x="50" y="296" width="140" height="6" rx="2" fill="#1e1a16"/>
+                  <rect x="54" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="68" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="82" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="96" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="110" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="124" y="297" width="12" height="4" rx="1" fill="#2a2520"/>
+                  <rect x="138" y="297" width="14" height="4" rx="1" fill="#2a2520"/>
+
+                  <!-- Amber tie/collar detail -->
+                  <path d="M116 234 L120 246 L124 234" fill="rgba(245,158,11,.5)"/>
+                </svg>
+              </div>
+
+              <div class="portrait-status">
+                <div class="status-dot"></div>
+                <span>Open to Work</span>
+              </div>
+            </div>
+
+            <div class="portrait-badge">
+              <span class="portrait-badge__n">3+</span>
+              <span class="portrait-badge__t">Yrs Craft</span>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="reveal">
+            <div class="about__body">
+              <p>
+                Hi, I'm <strong>Vivek Kumar</strong> — a 20-year-old front-end developer from
+                New Delhi, currently pursuing BA English (Hons) at the University of Delhi.
+                I discovered web development and haven't stopped building since.
+              </p>
+              <p>
+                I specialise in <strong>React, JavaScript (ES6+), and modern CSS</strong> —
+                turning ideas into clean, performant interfaces. My focus is on writing
+                maintainable code, pixel-perfect UIs, and experiences that feel effortless.
+              </p>
+              <p>
+                Actively seeking <strong>internship or junior front-end opportunities</strong>
+                where I can contribute, learn fast, and grow with a strong engineering team.
+              </p>
+            </div>
+
+            <!-- Skill bars -->
+            <div class="skills reveal">
+              <div class="skills__title">Core Skills</div>
+
+              <div class="skill-bar" data-pct="88">
+                <div class="skill-bar__top">
+                  <span class="skill-bar__name">HTML5 &amp; CSS3</span>
+                  <span class="skill-bar__pct">88%</span>
+                </div>
+                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+              </div>
+              <div class="skill-bar" data-pct="80">
+                <div class="skill-bar__top">
+                  <span class="skill-bar__name">JavaScript (ES6+)</span>
+                  <span class="skill-bar__pct">80%</span>
+                </div>
+                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+              </div>
+              <div class="skill-bar" data-pct="72">
+                <div class="skill-bar__top">
+                  <span class="skill-bar__name">React.js</span>
+                  <span class="skill-bar__pct">72%</span>
+                </div>
+                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+              </div>
+              <div class="skill-bar" data-pct="75">
+                <div class="skill-bar__top">
+                  <span class="skill-bar__name">Responsive Design</span>
+                  <span class="skill-bar__pct">75%</span>
+                </div>
+                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+              </div>
+              <div class="skill-bar" data-pct="68">
+                <div class="skill-bar__top">
+                  <span class="skill-bar__name">Tailwind CSS</span>
+                  <span class="skill-bar__pct">68%</span>
+                </div>
+                <div class="skill-bar__track"><div class="skill-bar__fill"></div></div>
+              </div>
+            </div>
+
+            <!-- Chips -->
+            <div class="chips stagger">
+              <span class="chip">React</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">HTML5</span>
+              <span class="chip">CSS3</span>
+              <span class="chip">Tailwind</span>
+              <span class="chip">Bootstrap</span>
+              <span class="chip">Git &amp; GitHub</span>
+              <span class="chip">VS Code</span>
+              <span class="chip">AI Tools</span>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline reveal">
+              <div class="timeline__title">My Journey</div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div>
+                  <span class="tl-year">2023</span>
+                  <div class="tl-name">Discovery</div>
+                  <div class="tl-desc">Found my passion for web development during school.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div>
+                  <span class="tl-year">2024</span>
+                  <div class="tl-name">Foundation</div>
+                  <div class="tl-desc">HTML, CSS, JS, certifications — built real projects.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div>
+                  <span class="tl-year">2025</span>
+                  <div class="tl-name">Progress</div>
+                  <div class="tl-desc">Diving deep into React — building this portfolio.</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div>
+                  <span class="tl-year">Future</span>
+                  <div class="tl-name">Destination</div>
+                  <div class="tl-desc">Creating impactful digital products worldwide.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.about__grid -->
+
+        <!-- Feature tiles -->
+        <div class="features stagger reveal">
+          <div class="feat">
+            <span class="feat__icon">&lt;/&gt;</span>
+            <h3>Frontend Dev</h3>
+            <p>HTML, CSS, JavaScript, React, Tailwind — the full modern stack.</p>
+          </div>
+          <div class="feat">
+            <span class="feat__icon">🎨</span>
+            <h3>UI / UX Design</h3>
+            <p>Pixel-perfect, accessible interfaces that delight users.</p>
+          </div>
+          <div class="feat">
+            <span class="feat__icon">⚡</span>
+            <h3>Performance</h3>
+            <p>Optimising load times, animations, and core web vitals.</p>
+          </div>
+          <div class="feat">
+            <span class="feat__icon">📱</span>
+            <h3>Responsive</h3>
+            <p>Mobile-first layouts that work on every screen and device.</p>
+          </div>
+        </div>
+
+        <!-- Education / Certs -->
+        <div class="edu-panel reveal">
+          <div>
+            <div class="edu-block__label">Education</div>
+            <div class="edu-entry">
+              <div class="edu-entry__school">School of Open Learning</div>
+              <div class="edu-entry__deg">BA (Hons) English — University of Delhi</div>
+              <div class="edu-entry__year">June 2024 – June 2028</div>
+            </div>
+          </div>
+          <div>
+            <div class="edu-block__label">Certifications</div>
+            <div class="cert-item">
+              <div class="cert-item__dot"></div>
+              <div class="cert-item__text">Web Design Certificate — AK Institute, Delhi (HTML, CSS, JS)</div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-item__dot"></div>
+              <div class="cert-item__text">Introduction to Front-End Development — Meta (Coursera)</div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-item__dot"></div>
+              <div class="cert-item__text">Advanced Computer Certificate — Digital Computer Institute</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ════════════════════════════════
+         PROJECTS
+    ════════════════════════════════ -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="projects-top reveal">
+          <div>
+            <div class="eyebrow">Work</div>
+            <h2 class="s-heading">Selected <em>Projects</em></h2>
+          </div>
+          <div class="projects-count">04 Projects</div>
+        </div>
+
+        <div class="projects-grid stagger">
+
+          <!-- 01 Featured wide -->
+          <article class="pcard pcard--wide">
+            <div class="pcard__preview">
+              <div class="preview-bg p1">
+                <div class="browser-win">
+                  <div class="bw-bar">
+                    <div class="bw-dot"></div><div class="bw-dot"></div><div class="bw-dot"></div>
+                    <div class="bw-url"><span class="bw-url-text">vivekzx02.github.io/Gaming/</span></div>
+                  </div>
+                  <div class="bw-body">
+                    <div class="bw-line bw-amber"></div>
+                    <div class="bw-line w80"></div>
+                    <div class="bw-line w60"></div>
+                    <div class="bw-line w90"></div>
+                    <div class="bw-line bw-red"></div>
+                    <div class="bw-line w70"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="pcard__bgnum">01</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__tags">
+                <span class="pcard__tag">HTML</span>
+                <span class="pcard__tag">CSS3</span>
+                <span class="pcard__tag">JavaScript</span>
+                <span class="pcard__tag">Animations</span>
+              </div>
+              <h3 class="pcard__title">Animated Gaming Website</h3>
+              <p class="pcard__desc">A responsive, visually immersive gaming landing page — smooth scroll, interactive elements, and a dark theme built entirely with vanilla HTML, CSS &amp; JS.</p>
+              <div class="pcard__links">
+                <a href="https://github.com/vivekzx02" target="_blank" rel="noopener" class="p-link">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                  Code
+                </a>
+                <a href="https://vivekzx02.github.io/Gaming/" target="_blank" rel="noopener" class="p-link p-link--accent">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Live Demo →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 -->
+          <article class="pcard">
+            <div class="pcard__preview">
+              <div class="preview-bg p2">
+                <div class="browser-win">
+                  <div class="bw-bar">
+                    <div class="bw-dot"></div><div class="bw-dot"></div><div class="bw-dot"></div>
+                    <div class="bw-url"><span class="bw-url-text">vivekzx02.github.io/Porfolio/</span></div>
+                  </div>
+                  <div class="bw-body">
+                    <div class="bw-line w60"></div>
+                    <div class="bw-line bw-amber"></div>
+                    <div class="bw-line w80"></div>
+                    <div class="bw-line bw-amber2"></div>
+                    <div class="bw-line w40"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="pcard__bgnum">02</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__tags">
+                <span class="pcard__tag">HTML</span>
+                <span class="pcard__tag">CSS</span>
+                <span class="pcard__tag">JavaScript</span>
+              </div>
+              <h3 class="pcard__title">Modern Portfolio Website</h3>
+              <p class="pcard__desc">Responsive personal portfolio — showcasing design and frontend skills as a professional space for potential clients.</p>
+              <div class="pcard__links">
+                <a href="https://github.com/vivekzx02" target="_blank" rel="noopener" class="p-link">Code</a>
+                <a href="https://vivekzx02.github.io/Porfolio/" target="_blank" rel="noopener" class="p-link p-link--accent">Live Demo →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 03 -->
+          <article class="pcard">
+            <div class="pcard__preview">
+              <div class="preview-bg p3">
+                <div class="browser-win">
+                  <div class="bw-bar">
+                    <div class="bw-dot"></div><div class="bw-dot"></div><div class="bw-dot"></div>
+                    <div class="bw-url"><span class="bw-url-text">portfolio-v2.vercel.app</span></div>
+                  </div>
+                  <div class="bw-body">
+                    <div class="bw-line w90"></div>
+                    <div class="bw-line bw-red"></div>
+                    <div class="bw-line w70"></div>
+                    <div class="bw-line w50"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="pcard__bgnum">03</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__tags">
+                <span class="pcard__tag">React</span>
+                <span class="pcard__tag">Tailwind</span>
+                <span class="pcard__tag">Animations</span>
+              </div>
+              <h3 class="pcard__title">Portfolio v2 — React</h3>
+              <p class="pcard__desc">React-powered portfolio with component-based architecture, smooth transitions, and full responsive design.</p>
+              <div class="pcard__links">
+                <a href="https://github.com/vivekzx02" target="_blank" rel="noopener" class="p-link">Code</a>
+                <a href="#" class="p-link p-link--accent">Coming Soon →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 -->
+          <article class="pcard">
+            <div class="pcard__preview">
+              <div class="preview-bg p4">
+                <div class="browser-win">
+                  <div class="bw-bar">
+                    <div class="bw-dot"></div><div class="bw-dot"></div><div class="bw-dot"></div>
+                    <div class="bw-url"><span class="bw-url-text">ui-components.dev</span></div>
+                  </div>
+                  <div class="bw-body">
+                    <div class="bw-line bw-amber"></div>
+                    <div class="bw-line w80"></div>
+                    <div class="bw-line w60"></div>
+                    <div class="bw-line w90"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="pcard__bgnum">04</span>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__tags">
+                <span class="pcard__tag">JavaScript</span>
+                <span class="pcard__tag">CSS3</span>
+                <span class="pcard__tag">UI Library</span>
+              </div>
+              <h3 class="pcard__title">Interactive UI Components</h3>
+              <p class="pcard__desc">A collection of reusable, animated UI components — modals, sliders, cards — built for real-world integration.</p>
+              <div class="pcard__links">
+                <a href="https://github.com/vivekzx02" target="_blank" rel="noopener" class="p-link">Code</a>
+                <a href="#" class="p-link p-link--accent">Coming Soon →</a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.projects-grid -->
+      </div><!-- /.container -->
+    </section>
+
+    <!-- ════════════════════════════════
+         CONTACT
+    ════════════════════════════════ -->
+    <section id="contact" class="section section--alt">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Contact</div>
+          <h2 class="s-heading">Let's build something<br><em>great</em> together.</h2>
+          <p class="s-sub">Ready to start a project, looking for a collaborator, or just want to say hello? My inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Form -->
+          <form id="cForm" novalidate class="reveal">
+            <div class="form-field">
+              <label class="form-label" for="fname">Your Name *</label>
+              <input class="form-input" id="fname" type="text" placeholder="Rahul Sharma" autocomplete="name" required/>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="femail">Email Address *</label>
+              <input class="form-input" id="femail" type="email" placeholder="rahul@example.com" autocomplete="email" required/>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="fsubject">Subject</label>
+              <input class="form-input" id="fsubject" type="text" placeholder="Project Inquiry / Freelance Work"/>
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="fmsg">Message *</label>
+              <textarea class="form-textarea" id="fmsg" rows="5" placeholder="Tell me about your project or idea..." required></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="fBtn">Send Message →</button>
+          </form>
+
+          <!-- Info -->
+          <div class="reveal">
+            <h3 class="cinfo__lead-title">Get in Touch</h3>
+            <p class="cinfo__lead-text">I'm always open to new opportunities, creative projects, or a friendly chat about frontend and design.</p>
+
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="info-card__icon">✉️</div>
+                <div>
+                  <span class="info-card__label">Email</span>
+                  <div class="info-card__val">vivekkumar.webdev@gmail.com</div>
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="info-card__icon">📞</div>
+                <div>
+                  <span class="info-card__label">Phone</span>
+                  <div class="info-card__val">+91 888-220-3035</div>
+                </div>
+              </div>
+              <div class="info-card">
+                <div class="info-card__icon">📍</div>
+                <div>
+                  <span class="info-card__label">Location</span>
+                  <div class="info-card__val">Molarband Extn., New Delhi — 110044</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="avail-pill">
+              <div class="avail-pill__dot"></div>
+              <span>Available for new projects</span>
+            </div>
+
+            <div class="social-row">
+              <a href="https://github.com/vivekzx02" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/vivek-kumar-a73bb0360/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="mailto:vivekkumar.webdev@gmail.com" class="social-btn" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </a>
+              <a href="https://vivekzx02.github.io/Porfolio/" target="_blank" rel="noopener" class="social-btn" aria-label="Portfolio">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /.contact-grid -->
+      </div><!-- /.container -->
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer class="footer">
+    <a href="#home" class="footer__logo">VK<em>.</em></a>
+    <ul class="footer__nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer__copy">
+      © <span id="yr"></span> Vivek Kumar. Made with <em>♥</em> in New Delhi.
+    </div>
+  </footer>
+
+  <!-- Main script (loaded last for DOM availability) -->
+  <script src="index.js"></script>
+
+</body>
+</html>
