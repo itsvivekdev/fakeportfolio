@@ -3,7 +3,10 @@
    Theme: Warm Charcoal + Amber Gold
    Fonts: Clash Display + Satoshi + JetBrains Mono
 ===================================================== */
-
+*{
+  margin: 0;
+  padding: 0;
+}
 /* ─── DESIGN TOKENS ─── */
 :root {
   --bg-0:   #0a0908;   /* deepest black-brown */
